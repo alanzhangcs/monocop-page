@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords"
+        content="Chain-of-Prediction, Monocular 3D Object Detection, 3D Object Detection, 3D Scene Understanding">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unleashing the Power of Chain-of-Prediction for Monocular 3D Object Detection</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/button_style.css">
+    <link rel="icon" href="./static/images/internet.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script defer src="./static/js/brands.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+        <div class="container is-max-desktop">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#top">
+                    <strong>MonoCoP</strong>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarMain" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="#abstract">Abstract</a>
+                    <a class="navbar-item" href="#pipeline">Pipeline</a>
+                    <a class="navbar-item" href="#results">Results</a>
+                    <a class="navbar-item" href="#BibTeX">BibTeX</a>
+                    <a class="navbar-item" href="https://github.com/alanzhangcs/MonoCoP" target="_blank"
+                        rel="noopener">Code</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="top">
+
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h1 class="title is-1 publication-title">Unleashing the Power of Chain-of-Prediction for
+                                Monocular 3D Object Detection</h1>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    <a href="https://alanzhangcs.github.io/">Zhihao Zhang</a>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://sites.google.com/view/abhinavkumar">Abhinav Kumar</a>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://girish1511.github.io/">Girish Chandar Ganesan</a>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://cs.unc.edu/person/xiaoming-liu/">Xiaoming Liu</a>
+                                </span>
+                            </div>
+
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">Michigan State University</span>
+                            </div>
+                            <div class="is-size-5 publication-authors">
+                                <span class="pub-venue-badge">CVPR&nbsp;2026</span>
+                            </div>
+
+
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- PDF Link. -->
+                                    <span class="link-block">
+                                        <a href="https://arxiv.org/pdf/2505.04594"
+                                            class="external-link button pub-main-btn">
+                                            <span class="icon">
+                                                <i class="ai ai-arxiv"></i>
+                                            </span>
+                                            <span><strong>Paper</strong></span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://github.com/alanzhangcs/MonoCoP"
+                                            class="external-link button pub-ghost-btn">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span><strong>Code</strong></span>
+                                        </a>
+                                    </span>
+
+                                    <span class="link-block">
+                                        <a href="https://huggingface.co/zhihao406/"
+                                            class="external-link button pub-ghost-btn">
+                                            <span class="icon">
+                                                🤗
+                                            </span>
+                                            <span><strong>Models</strong></span>
+                                        </a>
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero teaser">
+            <div class="container is-max-desktop">
+                <div class="hero-body">
+                    <img src="./static/images/teaser.png" class="teaser-image lightbox-image" alt="teaser image." />
+
+                    <h2 class="subtitle has-text-justified">
+                        In Mono3D, 3D attributes are inter-correlated through the 3D-to-2D projection. Our
+                        MonoCoP is an adaptive framework that learns when and how to leverage inter-attribute
+                        correlations.
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" id="abstract">
+            <div class="container is-max-desktop">
+                <!-- Abstract. -->
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Abstract</h2>
+                        <div class="content has-text-justified">
+                            Monocular 3D detection (Mono3D) aims to infer 3D bounding boxes from a single RGB image.
+                            Without auxiliary sensors such as LiDAR, this task is inherently ill-posed since the
+                            3D-to-2D projection introduces
+                            depth ambiguity.
+                            Previous works often predict 3D attributes (e.g., depth, size, and orientation) in parallel,
+                            overlooking that these
+                            attributes are inherently correlated through the 3D-to-2D projection.
+                            However, simply enforcing such correlations through sequential prediction can propagate
+                            errors across attributes,
+                            especially when objects are occluded or truncated, where inaccurate size or orientation
+                            predictions can further amplify
+                            depth errors.
+                            Therefore, neither parallel nor sequential prediction is optimal.
+                            In this paper, we propose MonoCoP, an adaptive framework that learns when and how to
+                            leverage inter-attribute
+                            correlations with two complementary designs.
+                            A Chain-of-Prediction (CoP) explores inter-attribute correlations through feature-level
+                            learning, propagation, and
+                            aggregation, while an Uncertainty-Guided Selector (GS) dynamically switches between CoP and
+                            parallel paradigms for each
+                            object based on the predicted uncertainty.
+                            By combining their strengths, MonoCoP achieves state-of-the-art (SOTA) performance on KITTI,
+                            nuScenes, and Waymo,
+                            significantly improving depth accuracy, particularly for distant and challenging objects.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="section" id="pipeline">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="is-centered">
+                    <h2 class="title is-3">Overall Pipeline</h2>
+                    <img src="./static/images/model.png" class="pipeline lightbox-image" alt="" />
+                </div>
+                <p class="has-text-justified">
+                    MonoCoP consists of two main components: a Chain-of-Prediction (CoP) and an
+                    Uncertainty-Guided Selector (GS) module.
+                    The CoP module predicts 3D attributes (depth, size, and orientation) sequentially, leveraging the
+                    correlation between attributes.
+                    The GS module dynamically switches between CoP and parallel paradigms for each object based on the
+                    predicted uncertainty.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="section" id="results">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="is-centered">
+                    <h2 class="title is-3">KITTI Results</h2>
+                    <img src="./static/images/KITTI.png" class="instance_seg lightbox-image" alt="" />
+                </div>
+                <p>
+                    MonoCoP sets a new state of the art in monocular 3D object detection across KITTI leaderboard and
+                    KITTI Validation set.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="is-centered">
+                    <h2 class="title is-3">Waymo Results</h2>
+                    <img src="./static/images/Waymo.png" class="instance_seg lightbox-image" alt="" />
+                </div>
+                <p>
+                    MonoCoP outperforms previous methods by a large margin in Waymo Validation set.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="is-centered">
+                    <h2 class="title is-3">nuScenes Results</h2>
+                    <img src="./static/images/nuScenes.png" class="instance_seg lightbox-image" alt="" width="50%" />
+                </div>
+                <p>
+                    MonoCoP also achieves state-of-the-art performance in nuScenes Validation set.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="is-centered">
+                    <h2 class="title is-3">Qualitative Results</h2>
+                    <img src="./static/images/vis.png" class="instance_seg lightbox-image" alt="" width="100%" />
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">BibTeX</h2>
+                <pre><code>@article{zhang2025unleashing,
+    title={Unleashing the Power of Chain-of-Prediction for Monocular 3D Object Detection},
+    author={Zhang, Zhihao and Kumar, Abhinav and Ganesan, Girish Chandar and Liu, Xiaoming},
+    journal={arXiv preprint arXiv:2505.04594},
+    year={2025}
+}
+    </code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is adapted from <a
+                                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+                            licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
