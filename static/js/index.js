@@ -74,4 +74,32 @@ $(document).ready(function () {
   $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
   bulmaSlider.attach();
+
+  // Figure lightbox (click to zoom)
+  const $lightbox = $('#figure-lightbox');
+  const $lightboxImg = $('#figure-lightbox-img');
+
+  function openLightbox(src, alt) {
+    $lightboxImg.attr('src', src).attr('alt', alt || '');
+    $lightbox.addClass('is-active').attr('aria-hidden', 'false');
+    $('html').addClass('is-clipped');
+  }
+
+  function closeLightbox() {
+    $lightbox.removeClass('is-active').attr('aria-hidden', 'true');
+    $lightboxImg.attr('src', '').attr('alt', '');
+    $('html').removeClass('is-clipped');
+  }
+
+  $('.lightbox-image').on('click', function () {
+    openLightbox($(this).attr('src'), $(this).attr('alt'));
+  });
+
+  $('#figure-lightbox .modal-background, #figure-lightbox .modal-close').on('click', closeLightbox);
+
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape' && $lightbox.hasClass('is-active')) {
+      closeLightbox();
+    }
+  });
 })

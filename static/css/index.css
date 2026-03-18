@@ -149,6 +149,34 @@ body {
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
 }
 
+/* 点击放大弹出：更“高级”的 lightbox 动画 */
+.figure-lightbox .modal-background {
+  background: rgba(17, 24, 39, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.figure-lightbox .modal-content {
+  width: min(1100px, 92vw);
+  max-height: 88vh;
+}
+
+.figure-lightbox-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 14px;
+  padding: 0.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+#figure-lightbox-img {
+  max-height: calc(88vh - 2.5rem);
+  width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+
 /* 标题下面的按钮行（统一浅色、高级感） */
 .publication-links {
   margin-top: 1.5rem;

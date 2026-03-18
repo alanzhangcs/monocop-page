@@ -1,1 +1,1 @@
-# TAMM
+# Project Page for MonoCoP (CVPR 2026)
