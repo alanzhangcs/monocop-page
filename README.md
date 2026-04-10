@@ -1,4 +1,4 @@
-# Project Page for MonoCoP (CVPR 2026)
+# Project Page for MonoCoP (CVPR 2026 Highlight)
 
 If you finds this project page helps you, please kindly cite our paper:
 
